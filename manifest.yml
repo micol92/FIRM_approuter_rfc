@@ -1,0 +1,19 @@
+applications:
+
+- name: approuter-jco
+  path: ./
+
+  buildpacks:
+  - nodejs_buildpack
+
+  memory: 120M
+
+  env:
+    NODE_TLS_REJECT_UNAUTHORIZED: 0
+    destinations: >
+      [
+         {"name":"dest", "url" :"https://myrfc01-bold-kob-pb.cfapps.ap12.hana.ondemand.com/ConnectRFC", "forwardAuthToken": true }
+      ]
+
+  services:
+    - MYERPS20-xsuaa
